@@ -1,0 +1,12 @@
+#define LPIN 13
+
+void setup() { 
+   pinMode(LPIN, OUTPUT);
+}
+
+void loop() {
+   digitalWrite(LPIN, HIGH);
+   delay(1000);
+   digitalWrite(LPIN, LOW);
+   delay(1000);
+}
