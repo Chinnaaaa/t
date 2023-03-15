@@ -1,0 +1,24 @@
+fun main() {
+    val n = 100
+    var i: Int
+    var j: Int
+    var isPrime: Boolean
+    
+    // Loop through all numbers from 2 to n
+    for (i in 2..n) {
+        isPrime = true
+        
+        // Check if i is prime by dividing it by all numbers from 2 to i-1
+        for (j in 2 until i) {
+            if (i % j == 0) {
+                isPrime = false
+                break
+            }
+        }
+        
+        // If i is prime, print it
+        if (isPrime) {
+            println(i)
+        }
+    }
+}
