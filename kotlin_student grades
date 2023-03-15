@@ -1,0 +1,19 @@
+fun main() {
+    print("Enter the student's percentage: ")
+    val percentage = readLine()!!.toDouble() // Read user input as a Double
+    
+    val grade = calculateGrade(percentage)
+    
+    println("The student's grade is $grade")
+}
+
+fun calculateGrade(percentage: Double): String {
+    return when (percentage) {
+        in 90.0..100.0 -> "A+"
+        in 80.0..89.9 -> "A"
+        in 70.0..79.9 -> "B"
+        in 60.0..69.9 -> "C"
+        in 50.0..59.9 -> "D"
+        else -> "F"
+    }
+}
