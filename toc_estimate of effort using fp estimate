@@ -1,0 +1,51 @@
+#include<iostream>
+#include<string>
+#include<stack>
+using namespace std;
+int main()
+{
+    string input;
+    stack<char> s;
+    const char special_symbol = '$';
+    cout<<"Enter the string:";
+    cin>>input;
+    if(input.find(special_symbol)==string::npos)
+    {
+        cout<<"not Accepted"<<endl;
+        return 0;
+
+    }
+    int pos = input.find(special_symbol);
+    string first = input.substr(0, pos);
+
+    if (input.length() <pos + 1)
+    {
+        cout <<"Not Accepted" <<endl;
+        return 0;
+    }
+    string rev = input.substr(pos + 1,input.length());
+    {
+
+        cout<<"Not Accepted"<<endl;
+        return 0;
+
+
+    }
+    for (int i = 0; i <first.length();i++)
+    {
+
+        s.push(first[i]);
+    }
+    for(int i=0; i<rev.length();i++)
+    {
+
+        if (s.top() !=rev[i])
+        {
+            cout<<"Not Accepted"<<endl;
+            return 0;
+        }
+        s.pop();
+
+    }
+    cout<<"Accepted"<<endl;
+    return 0;
