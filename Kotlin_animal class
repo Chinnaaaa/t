@@ -1,0 +1,27 @@
+open class Animal {
+    fun sleep() {
+        println("Sleeping")
+    }
+}
+
+class Pig : Animal() {
+    fun eat() {
+        println("Pig Eating")
+    }
+}
+
+class Dog : Animal() {
+    fun eat() {
+        println("Dog Eating")
+    }
+}
+
+fun main() {
+    val pig = Pig()
+    pig.eat()
+    pig.sleep()
+
+    val dog = Dog()
+    dog.eat()
+    dog.sleep()
+}
