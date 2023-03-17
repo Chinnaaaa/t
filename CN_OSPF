@@ -1,0 +1,128 @@
+pc0 config : 
+
+ip address : 10.0.0.2
+default gateway : 10.0.0.1
+
+
+pc1 config : 
+
+ip address : 10.0.0.3
+default gateway : 10.0.0.1
+
+
+
+pc2 config : 
+
+ip address : 10.0.0.4
+default gateway : 10.0.0.1
+
+
+
+
+pc3 config : 
+
+ip address : 20.0.0.2
+default gateway : 20.0.0.1
+
+
+
+
+pc4 config : 
+
+ip address : 20.0.0.3
+default gateway : 20.0.0.1
+
+
+
+
+pc5 config : 
+
+ip address : 20.0.0.4
+default gateway : 20.0.0.1
+
+
+pc6 config : 
+
+ip address : 30.0.0.2
+default gateway : 30.0.0.1
+
+
+
+pc7 config : 
+
+ip address : 30.0.0.3
+default gateway : 30.0.0.1
+
+
+
+pc8 config : 
+
+ip address : 30.0.0.4
+default gateway : 30.0.0.1
+
+
+
+router0 config (interface(gigabitethernet0/0)) :
+
+ip address : 10.0.0.1
+
+router0 config (interface(serial 0/1/0)) :
+
+ip address : 40.0.0.1
+
+
+
+router1 config (interface(gigabitethernet0/0)) :
+
+ip address : 20.0.0.1
+
+router1 config (interface(serial 0/1/0)) :
+
+ip address : 40.0.0.2
+
+router1 config (interface(serial 0/1/1)) :
+
+ip address : 50.0.0.1
+
+
+router2 config (interface(gigabitethernet0/0)) :
+
+ip address : 30.0.0.1
+
+router1 config (interface(serial 0/1/0)) :
+
+ip address : 50.0.0.2
+
+
+
+
+Configuring Router 0 for OSPF (using the CLI mode)
+Router(config)#
+Router(config)#router ospf 1
+Router(config-router)#network 10.0.0.0 0.0.0.255 area 1
+Router(config-router)#network 40.0.0.0 0.0.0.255 area 1
+Router(config-router)#exit 
+
+
+
+Configuring Router 1 for OSPF (using the CLI mode)
+Router(config)#
+Router(config)#router ospf 1
+Router(config-router)#
+Router(config-router)#network 40.0.0.0 0.0.0.255 area 1
+Router(config-router)#network 40.0.0.0 0.0.0.255 area 1
+Router(config-router)#network 50.0.0.0 0.0.0.255 area 1
+Router(config-router)#exit 
+
+
+
+
+Configuring Router 2 for OSPF (using the CLI mode)
+Router(config)#
+Router(config)#router ospf 1
+Router(config-router)#
+Router(config-router)#network 30.0.0.0 0.0.0.255 area 1
+Router(config-router)#network 50.0.0.0 0.0.0.255 area 1
+Router(config-router)# exit 
+
+
