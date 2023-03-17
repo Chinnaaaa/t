@@ -1,0 +1,138 @@
+pc0 config : 
+
+ip address : 10.10.0.2
+default gateway : 10.10.0.1
+
+
+pc1 config : 
+
+ip address : 10.10.0.3
+default gateway : 10.10.0.1
+
+
+
+pc2 config : 
+
+ip address : 10.10.0.4
+default gateway : 10.10.0.1
+
+
+
+
+pc3 config : 
+
+ip address : 10.20.0.2
+default gateway : 10.20.0.1
+
+
+
+
+pc4 config : 
+
+ip address : 10.20.0.3
+default gateway : 10.20.0.1
+
+
+
+
+pc5 config : 
+
+ip address : 10.20.0.4
+default gateway : 10.20.0.1
+
+
+pc6 config : 
+
+ip address : 10.30.0.2
+default gateway : 10.30.0.1
+
+
+
+pc7 config : 
+
+ip address : 10.30.0.3
+default gateway : 10.30.0.1
+
+
+
+pc8 config : 
+
+ip address : 10.30.0.4
+default gateway : 10.30.0.1
+
+
+
+
+
+router0 config (INTERNET(gigabitethernet0/0)) :
+
+ip address : 10.10.1
+subnet mask : 255.255.255.248
+
+router0 config (serial 0/1/0) :
+
+ip address : 192.168.0.1
+subnet mask : 255.255.255.252
+
+
+router1 config (INTERNET(gigabitethernet0/0)) :
+
+ip address : 10.20.1
+subnet mask : 255.255.255.248
+
+router1 config (serial 0/1/0) :
+
+ip address : 192.168.0.2
+subnet mask : 255.255.255.252
+
+router1 config (serial 0/1/1) :
+
+ip address : 192.168.1.1
+subnet mask : 255.255.255.252
+
+router2 config (INTERNET(gigabitethernet0/0)) :
+
+ip address : 10.30.0.1
+subnet mask : 255.255.255.248
+
+router1 config (serial 0/1/1) :
+
+ip address : 192.168.1.2
+subnet mask : 255.255.255.252
+
+
+
+
+
+Configuring Router 0 for RIPv2 (using the CLI mode)
+Router>enable 
+Router#configure terminal 
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#network 10.10.0.0
+Router(config-router)#network 192.168.0.0
+Router(config-router)#exit
+
+
+Configuring Router 1 for RIPv2 (using the CLI mode)
+Router>enable 
+Router#configure terminal 
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#network 10.20.0.0
+Router(config-router)#network 192.168.0.0
+Router(config-router)#network 192.168.1.0
+Router(config-router)#exit
+
+
+Configuring Router 2 for RIPv2 (using the CLI mode)
+Router>enable 
+Router#configure terminal 
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#network 10.30.0.0
+Router(config-router)#network 192.168.1.0
+Router(config-router)#exit
+
+
+
