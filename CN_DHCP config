@@ -1,0 +1,6 @@
+server config :  
+
+ip address : 10.0.0.2
+default gateway :10.0.0.1
+dns server : 10.0.0.2
+
