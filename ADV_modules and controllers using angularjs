@@ -1,0 +1,76 @@
+Main.ts:
+import { platformBrowserDynamic } from ‘@angular/platform-browser-dynamic’; import { AppModule } from ‘./app/app.module’; platformBrowserDynamic().bootstrapModule(AppModule)
+.catch(err => console.error(err));
+index.html:
+<!doctype html>
+<html lang=”en”>
+<head>
+<meta charset=”utf-8”>
+<title>Prac4</title>
+<base href=”/”>
+<meta name=”viewport” content=”width=device-width, initial-scale=1”>
+<link rel=”icon” type=”image/x-icon” href=”favicon.ico”>
+</head>
+<body>
+<app-root></app-root>
+</body>
+</html> 
+
+
+App.component.css:
+table, th,
+td {
+border: 1px solid grey; border-collapse: collapse; padding: 5px;
+}
+table tr:nth-child(odd) { background-color: #f2f2f2;
+}
+table tr:nth-child(even) { background-color: #ffffff;
+}
+
+App.component.html :
+
+<h2>Angular Sample Application</h2>
+<div ng-app=”mainApp” ng-controller=”studentController”>
+<table border=”0”>
+<tr>
+<td>Enter first name:</td>
+<td><input type=”text” [(ngModel)]=”student.firstName” /></td>
+</tr>
+<tr>
+<td>Enter last name:</td>
+<td><input type=”text” [(ngModel)]=”student.lastName” /></td>
+ 
+</tr>
+<tr>
+<td>Name:</td>
+<td>{{ student.fullName() }}</td>
+</tr>
+<tr>
+<td>Subject:</td>
+<td>
+<table>
+<tr>
+<th>Name</th>
+<th>Marks</th>
+</tr>
+<tr *ngFor=”let subject of student.subjects”>
+<td>{{ subject.name }}</td>
+<td>{{ subject.marks }}</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+
+Appmodule.ts :
+
+import { NgModule } from ‘@angular/core’;
+import { BrowserModule } from ‘@angular/platform-browser’; import { FormsModule } from ‘@angular/forms’;
+import { AppComponent } from ‘./app.component’; @NgModule({
+declarations: [AppComponent],
+imports: [BrowserModule, FormsModule],
+providers: [],
+bootstrap: [AppComponent],
+})
+export class AppModule {}
