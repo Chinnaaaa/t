@@ -1,0 +1,28 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+def check_items(url):
+driver = webdriver.Chrome() driver.get(url) time.sleep(3)
+
+all_combo_box = driver.find_elements(By.XPATH, "//li[contains(@class, 'usa-combo-box list-option')]")
+btn_count = len(all_combo_box)
+print("number of combo boxes are: ", btn_count)
+
+all_list = driver.find_elements(By.XPATH, "//li[contains(@class, 'usa- nav submenu-item')]")
+list_count = len(all_list)
+print("items in the list are: ",list_count)
+
+if name == ' main ':
+url = 'https://designsystem.digital.gov/components/combo-box/' check_items(url)
+
+
+
+
+
+
+OUTPUT:
+C:\Users\Muhid\PycharmProjects\pythonTesting\venv\Scripts\python.exe C:/Users/Muhid/PycharmProjects/pythonTesting/test.py
+number of combo boxes are: 64 items in the list are: 126
+
+Process finished with exit code 0
