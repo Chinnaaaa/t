@@ -1,0 +1,32 @@
+Step 1: Open Eclipse. Select your workspace directory. Click Launch:
+
+
+
+Step 2: Create a Project(File > New > Java Project):
+
+ 
+Step 3: Name the project as “p5” > click Finish > click Don’t Create module:
+
+
+Step 4: Create a Package(right-click on Project Name > New > Package > Name it > Finish):
+
+
+
+Step 5: Create a Class(right-click on Project Name > New > Class > Name it > Finish):
+
+ 
+Step 6: Adding “JXL(JAR file)” in Eclipse IDE:
+•	right-click on Project Name > Build Path > Configure Build Path
+
+
+•	now go under: Java Build Path > Libraries > Classpath > click Add External JARs
+
+
+•	Browse and add JAR file > click Apply and Close :
+ 
+ 
+
+Step 7: Creating the script in JAVA:
+
+ 
+Step 8: Run the file from Eclipse IDE:
