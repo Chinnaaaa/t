@@ -6,3 +6,11 @@ streamlit run "J:\project 3 year"\app.py
 install streamit
 
 pip install streamlit
+
+
+
+
+
+
+
+df = pd.read_csv(("J:\project 3 year\diabetes.csv"))
