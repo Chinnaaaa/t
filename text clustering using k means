@@ -1,0 +1,122 @@
+from sklearn.feature_extraction.text import TfidfVectorizer from sklearn.cluster import KMeans
+from sklearn.feature_extraction.text import TfidfVectorizer from sklearn.cluster import KMeans
+
+documents = [
+"Cats are known for their agility and grace", # cat doc1 "Dogs are often called ‘man’s best friend’.", # dog doc1
+"Some dogs are trained to assist people with disabilities.", # dog doc2
+"The sun rises in the east and sets in the west.", # sun doc1 "Many cats enjoy climbing trees and chasing toys.", # cat doc2
+"Birds are fascinating creatures that can fly in the sky.", # bird doc1
+"Fish live in water and breathe through gills.", # fish doc1 "Reptiles are cold-blooded animals with scales or plates.", # reptile
+ 
+doc1
+
+]
+ 
+"Owls are nocturnal birds of prey that hunt at night." # bird doc2
+ 
+
+# Create a TfidfVectorizer object
+vectorizer = TfidfVectorizer(stop_words='english')
+
+# Learn vocabulary and idf from training set.
+X = vectorizer.fit_transform(documents)
+
+# Perform k-means clustering
+kmeans = KMeans(n_clusters=3, random_state=0).fit(X)
+# Print cluster labels for each document print(kmeans.labels_)
+
+
+
+
+
+
+
+
+
+
+Given a collection of text documents from the 20 Newsgroups dataset, group similar documents into clusters using the K-means clustering algorithm.
+Program
+
+from sklearn.feature_extraction.text import TfidfVectorizer from sklearn.cluster import KMeans
+from sklearn import metrics
+from sklearn.datasets import fetch_20newsgroups
+
+# Step 1: Load and Preprocess the Data
+dataset = fetch_20newsgroups(subset='all', shuffle=True, random_state=42) documents = dataset.data
+
+# Step 2: Feature Extraction
+vectorizer = TfidfVectorizer(stop_words='english')
+X = vectorizer.fit_transform(documents)
+
+# Step 3: Apply K-means Clustering num_clusters = 20 # Number of clusters
+kmeans = KMeans(n_clusters=num_clusters, random_state=42) kmeans.fit(X)
+
+# Step 4: Evaluate Clustering Results
+silhouette_score = metrics.silhouette_score(X, kmeans.labels_, metric='euclidean')
+ari_score = metrics.adjusted_rand_score(dataset.target, kmeans.labels_)
+print("Silhouette Score:", silhouette_score) print("Adjusted Rand Index (ARI):", ari_score)
+
+
+
+
+
+
+
+
+Given a collection of text documents, group similar documents into clusters using the hierarchical clustering algorithm.
+Program
+
+from sklearn.feature_extraction.text import TfidfVectorizer from sklearn.cluster import AgglomerativeClustering
+
+documents = [
+"Cats are known for their agility and grace", # cat doc1 "Dogs are often called ‘man’s best friend’.", # dog doc1
+"Some dogs are trained to assist people with disabilities.", # dog doc2
+"The sun rises in the east and sets in the west.", # sun doc1 "Many cats enjoy climbing trees and chasing toys.", # cat doc2
+"Birds are fascinating creatures that can fly in the sky.", # bird doc1
+"Fish live in water and breathe through gills.", # fish doc1 "Reptiles are cold-blooded animals with scales or plates.", # reptile
+ 
+doc1
+]
+ 
+"Owls are nocturnal birds of prey that hunt at night." # bird doc2
+ 
+
+# Create a TfidfVectorizer object
+vectorizer = TfidfVectorizer(stop_words='english')
+
+# Learn vocabulary and idf from training set.
+X = vectorizer.fit_transform(documents)
+# Perform hierarchical clustering
+agg_clustering = AgglomerativeClustering(n_clusters=3).fit(X.toarray())
+
+# Print cluster labels for each document print(agg_clustering.labels_)
+
+
+
+
+
+
+
+
+
+
+Given a collection of text documents from the 20 Newsgroups dataset, group similar documents into clusters using the hierarchial clustering algorithm.
+Program
+from sklearn.feature_extraction.text import TfidfVectorizer from sklearn.cluster import AgglomerativeClustering
+from sklearn import metrics
+from sklearn.datasets import fetch_20newsgroups
+
+# Step 1: Load and Preprocess the Data
+dataset = fetch_20newsgroups(subset='all', shuffle=True, random_state=42) documents = dataset.data
+
+# Step 2: Feature Extraction
+vectorizer = TfidfVectorizer(stop_words='english')
+X = vectorizer.fit_transform(documents)
+
+# Step 3: Apply Hierarchical Clustering num_clusters = 20 # Number of clusters
+hierarchical_clustering = AgglomerativeClustering(n_clusters=num_clusters) hierarchical_clustering.fit(X.toarray())
+# Step 4: Evaluate Clustering Results silhouette_score = metrics.silhouette_score(X, hierarchical_clustering.labels_, metric='euclidean')
+ari_score = metrics.adjusted_rand_score(dataset.target, hierarchical_clustering.labels_)
+
+print("Silhouette Score:", silhouette_score) print("Adjusted Rand Index (ARI):", ari_score)
+
