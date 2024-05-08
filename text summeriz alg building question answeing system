@@ -1,0 +1,29 @@
+from sklearn.feature_extraction.text import TfidfVectorizer from sklearn.metrics.pairwise import cosine_similarity from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize import string
+# Sample corpus of text data (answers) corpus = [
+"Python is an interpreted, high-level, general-purpose programming language.",
+"Machine learning is the scientific study of algorithms and statistical models that computer systems use to perform a specific task without using explicit instructions.",
+"Natural language processing (NLP) is a subfield of linguistics, computer science, and artificial intelligence concerned with the interactions between computers and human language.",
+"Deep learning is a subset of machine learning in artificial intelligence (AI) that has networks capable of learning unsupervised from data that is unstructured or unlabeled.",
+"Reinforcement learning is an area of machine learning concerned with how software agents ought to take actions in an environment in order to maximize the notion of cumulative reward."
+]
+# Preprocess the corpus def preprocess(text):
+stop_words = set(stopwords.words('english')) text = text.lower() # Convert to lowercase
+text = text.translate(str.maketrans('', '', string.punctuation)) #
+Remove punctuation
+words = word_tokenize(text) # Tokenize words
+words = [word for word in words if word not in stop_words] # Remove stopwords
+return ' '.join(words)
+processed_corpus = [preprocess(text) for text in corpus] # TF-IDF Vectorization
+vectorizer = TfidfVectorizer()
+tfidf_matrix = vectorizer.fit_transform(processed_corpus)
+
+# User question
+question = input("Enter your question: ")
+# Preprocess the question processed_question = preprocess(question)
+
+# Calculate cosine similarity between question and answers question_vector = vectorizer.transform([processed_question])
+ 
+similarity_scores = cosine_similarity(question_vector, tfidf_matrix)
+# Retrieve the most similar answer most_similar_index = similarity_scores.argmax() answer = corpus[most_similar_index]
+print("Question:", question) print("Answer:", answer)
